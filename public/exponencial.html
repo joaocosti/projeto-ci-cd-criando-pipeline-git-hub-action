@@ -3,19 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Exponencial</title>
+    <title>Calcular Exponencial</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Calculadora de Exponencial</h1>
-        <label for="baseInput">Base:</label>
-        <input type="number" id="baseInput">
-        <label for="exponentInput">Expoente:</label>
-        <input type="number" id="exponentInput">
-        <button onclick="calculateExponential()">Calcular</button>
-        <div id="result"></div>
-    </div>
-    <script src="exponencial.js"></script>
+    <h1>Informe dois números:</h1>
+    <form action="/api/exponencial" method="post">
+        <input type="number" name="base" placeholder="Base" required>
+        <input type="number" name="expoente" placeholder="Expoente" required>
+        <button type="submit">Confirmar</button>
+    </form>
+    <button id="voltarBtn">Voltar</button>
+    <div id="resultado"></div>
+
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const base = event.target.elements.base.value;
+            const expoente = event.target.elements.expoente.value;
+            const response = await fetch('/api/exponencial', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ base, expoente })
+            });
+            const data = await response.json();
+            document.getElementById('resultado').innerText = `Resultado: ${data.resultado}`;
+        });
+
+        document.getElementById('voltarBtn').addEventListener('click', async () => {
+            const response = await fetch('/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            window.location.href = '/';
+        });
+    </script>
 </body>
 </html>
