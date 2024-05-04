@@ -4,7 +4,9 @@
   "description": "Projeto para criar um CI/CD para a matéria de cultura e prática devops da pós PUC Minas",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "teste-unitario": "jest testes-unitarios/",
+    "teste-integracao": "jest --detectOpenHandles testes-integracao/",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,12 @@
   "homepage": "https://github.com/joaocosti/projeto-ci-cd-pos-puc#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "supertest": "^7.0.0"
   }
 }
