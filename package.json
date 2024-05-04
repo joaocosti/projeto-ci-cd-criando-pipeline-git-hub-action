@@ -1,0 +1,23 @@
+{
+  "name": "projeto-ci-cd-pos-puc",
+  "version": "1.0.0",
+  "description": "Projeto para criar um CI/CD para a matéria de cultura e prática devops da pós PUC Minas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaocosti/projeto-ci-cd-pos-puc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaocosti/projeto-ci-cd-pos-puc/issues"
+  },
+  "homepage": "https://github.com/joaocosti/projeto-ci-cd-pos-puc#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  }
+}
