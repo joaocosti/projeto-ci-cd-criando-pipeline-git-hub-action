@@ -12,7 +12,6 @@ function calcularFatorial(numero) {
 }
 
 function calcularExponencial(base, expoente) {
-
     return Math.pow(base, expoente);
 }
 
