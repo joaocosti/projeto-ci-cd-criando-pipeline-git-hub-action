@@ -17,7 +17,7 @@ jobs:
     
     steps:
     - name: Checkout Repositorio
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
     - name: Defini versão do node
       uses: actions/setup-node@v4
@@ -28,9 +28,9 @@ jobs:
       run: npm install
     
     - name: Executar Testes unitários
-    - run: npm run teste-unitario
+      run: npm run teste-unitario
 
     - name: Executar Testes de integração
-    - run: npm run teste-integracao
+      run: npm run teste-integracao
 
     
