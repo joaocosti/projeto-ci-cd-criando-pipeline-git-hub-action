@@ -41,6 +41,11 @@ jobs:
         node-version: [20.x]
     
     steps:
+    - name: Debugging
+      run: |
+        pwd
+        ls
+
     - name: Change Directory to Repository
       run: cd ~/projeto-ci-cd-pos-puc
       
