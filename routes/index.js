@@ -21,6 +21,12 @@ router.get('/exponencial', (req, res) => {
     res.sendFile(indexPath)
 });
 
+router.get('/styles.css', (req, res) => {
+    const indexPath = path.join(__dirname, '../public/styles.css');
+
+    res.sendFile(indexPath)
+});
+
 router.post('/api/fatorial', (req, res) => {
     const numero = parseInt(req.body.numero);
     const resultado = calcularFatorial(numero);
