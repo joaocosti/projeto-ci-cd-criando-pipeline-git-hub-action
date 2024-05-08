@@ -3,10 +3,10 @@ Projeto para criar um CI/CD para a matéria de cultura e prática devops da pós
 
 ## Instalação e subir a aplicação:
 
-1. Utilizar a versão 14 do node:
+1. Utilizar a versão 20 do node:
 
 ```
-nvm use 14
+nvm use 20
 ```
 
 2. Instale as dependencias:
