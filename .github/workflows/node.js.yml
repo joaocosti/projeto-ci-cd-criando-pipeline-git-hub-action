@@ -41,6 +41,9 @@ jobs:
         node-version: [20.x]
     
     steps:
+    - name: Change Directory to Repository
+      run: cd ~/projeto-ci-cd-pos-puc
+      
     - name: Git Fetch e Pull
       run: |
         git fetch
