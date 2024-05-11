@@ -11,11 +11,11 @@ Link para acessar o site (Disponivél em 11 de Maio de 2024): https://projeto-ci
 ## Pipeline
 
 Foi estabelecida uma pipeline para o projeto, na qual a execução dos testes de integração e de unidade é acionada a cada commit ou pull request na branch principal. Resumidamente, a pipeline segue os seguintes passos:
-* 1. Checkout do Repositório: Realiza o checkout do repositório onde o código está armazenado.
-* 2. Definição da Versão do Node: Especifica a versão do Node.js a ser utilizada nos testes, configurada para a versão 20.x neste caso.
-* 3. Instalação de Dependências: Instala as dependências do projeto utilizando o npm.
-* 4. Execução de Testes Unitários: Realiza os testes unitários do projeto por meio do comando npm run teste-unitario.
-* 5. Execução de Testes de Integração: Conduz os testes de integração do projeto utilizando o comando npm run teste-integracao.
+* Checkout do Repositório: Realiza o checkout do repositório onde o código está armazenado.
+* Definição da Versão do Node: Especifica a versão do Node.js a ser utilizada nos testes, configurada para a versão 20.x neste caso.
+* Instalação de Dependências: Instala as dependências do projeto utilizando o npm.
+* Execução de Testes Unitários: Realiza os testes unitários do projeto por meio do comando npm run teste-unitario.
+* Execução de Testes de Integração: Conduz os testes de integração do projeto utilizando o comando npm run teste-integracao.
 
 
 ## Instalação e subir a aplicação:
