@@ -1,0 +1,99 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'NodeJS_20_x' // Nome da configuração de Node.js definida no Jenkins
+    }
+
+    options {
+        // Define um tempo limite de 11 minutos para a execução da pipeline
+        timeout(time: 11, unit: 'MINUTES')
+    }
+
+    triggers {
+        // Configura a pipeline para ser executada diariamente ao meio-dia
+        cron('0 12 * * *')
+    }
+
+    parameters {
+        // Adiciona um parâmetro para o nome da branch
+        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Nome da branch para executar os testes')
+    }
+    
+    stages {
+        stage('Checkout Repositorio') {
+            steps {
+                // Realiza o checkout do código do repositório manualmente
+                sh 'git clone https://github.com/joaocosti/projeto-ci-cd-pos-puc.git .'
+            }
+        }
+
+        stage('Instalar dependências') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Executar Testes') {
+            parallel {
+                stage('Testes Unitários') {
+                    steps {
+                        sh 'npm run teste-unitario'
+                    }
+                }
+
+                stage('Testes de Integração') {
+                    when {
+                        // Executa os testes de integração apenas se a branch for 'main'
+                        expression { params.BRANCH_NAME == 'main' }
+                    }
+                    steps {
+                        sh 'npm run teste-integracao'
+                    }
+                }
+            }
+        }
+        
+        stage('Aprovação Manual') {
+            steps {
+                input 'Aprovar para continuar?'
+            }
+        }
+        
+        stage('Matrix') {
+            matrix {
+                axes {
+                    axis {
+                        name 'PERFIL'
+                        values 'dev', 'qa'
+                    }
+                    axis {
+                        name 'ACAO'
+                        values 'validar', 'comunicar'
+                    }
+                }
+
+                stages {
+                    stage("${ACAO}") {
+                        steps {
+                            echo "{PERFIL}, você precisa {ACAO} essa entrega."
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finalizada, limpando workspace...'
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline concluída com sucesso!'
+        }
+        failure {
+            echo 'Pipeline falhou.'
+        }
+    }
+}
