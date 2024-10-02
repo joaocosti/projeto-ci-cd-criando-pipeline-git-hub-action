@@ -48,3 +48,6 @@ Para executar os testes integração executar:
 ```
  npm run teste-integracao
 ```
+## Jenkinsfile
+
+Este projeto inclui um arquivo Jenkinsfile desenvolvido com o objetivo de explorar e aprender sobre pipelines do Jenkins. A pipeline é configurada para executar testes unitários e testes de integração.
